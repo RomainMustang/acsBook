@@ -1,0 +1,54 @@
+{% extends '/layout/accueil.html' %}
+    {% block title %} Accueil {% endblock %}
+    {% block content %}
+        <div class="col-md-6">
+            <h2>ACS Book</h2>
+            <h2>La communication <br />entre<br/> développeurs!</h2>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body violet">
+                    <h2 class="text-center">Inscription rapide et 100% gratuite</h2>
+                    <div style="padding-top: 10%"></div>
+                     <form class="col-md-12">
+                        <div class="form-group col-md-12">
+                            <div class="col-md-3">
+                                <label for="firstName">Prénom :</label>
+                            </div>
+                            <div class="col-md-offset-2 col-md-7">
+                                <input type="text" class="form-control" id="firstName" name="firstName">
+                            </div>
+                        </div>
+                       <div class="form-group col-md-12">
+                            <div class="col-md-3">
+                                <label for="name">Nom :</label>
+                            </div>
+                            <div class="col-md-offset-2 col-md-7">
+                                <input type="text" class="form-control" id="name" name="name">
+                            </div>
+                        </div>
+                       <div class="form-group col-md-12">
+                            <div class="col-md-3">
+                                <label for="mail">E-mail :</label>
+                            </div>
+                            <div class="col-md-offset-2 col-md-7">
+                                <input type="mail" class="form-control" id="mail" name="mail">
+                            </div>
+                        </div>
+                       <div class="form-group col-md-12">
+                            <div class="col-md-4">
+                                <label for="pwd">Mot de passe :</label>
+                            </div>
+                            <div class="col-md-offset-1 col-md-7">
+                                <input type="password" class="form-control" id="pwd" name="pwd">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <button type="submit" id="register" class="col-md-offset-8 col-md-3">Enregistrer</button>
+                        </div>
+                    </form>
+                    <p style="margin-top: 2%">En vous enregistrant, vous acceptez les termes et conditions générales d'utilisations</p>
+                </div>
+            </div>
+        </div>
+{% endblock %}
