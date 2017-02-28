@@ -10,6 +10,10 @@ function road($controller, $action){
 			$controller = new PagesController();
 		break;
 		case 'posts':
+			require_once('models/friends_model.php');
+			require_once('models/post_model.php');
+			require_once('models/user_model.php');
+			require_once('models/wall_model.php');
 			$controller = new PostsController();
 		break;
 	}
