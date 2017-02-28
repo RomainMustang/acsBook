@@ -1,7 +1,8 @@
 <?php
 include 'vendor/autoload.php';
+include 'db/database.class.php';
 
-#$datab  = new Connection("localhost", "root", "", "acsbook");
+$datab  = new Connection("localhost", "root", "", "acsbook");
 $loader = new Twig_Loader_Filesystem(__DIR__ . '/templates');
 $twig   = new Twig_Environment($loader);
 
