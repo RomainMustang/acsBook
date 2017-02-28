@@ -2,37 +2,42 @@
 
 require "vendor/autoload.php";
 
-/*  page par défaut  */
-$page = 'index';
+function road($controller, $page){
 
-if(isset($_GET['p'])) {
-	$page = $_GET['p'];
-}
+	/*  Appel du controller spécifier  */
+	require_once('controllers/' . $controller . '_controller.php');
 
-$loader = new Twig_Loader_Filesystem(__DIR__ . '/templates');
-$twig   = new Twig_Environment($loader, [
-	'cache' => false
+	/*  page par défaut  */
+	$page = 'index';
 
-]); 
+	if(isset($_GET['p'])) {
+		$page = $_GET['p'];
+	}
 
-/*  Chargement de la page choisie  */
-switch ($page){
+	$loader = new Twig_Loader_Filesystem(__DIR__ . '/templates');
+	$twig   = new Twig_Environment($loader, [
+		'cache' => false
+	]); 
 
-	case 'home':
-		echo $twig->render('views/home.html');
-	break;
+	/*  Chargement de la page choisie  */
+	switch ($page){
 
-	case 'friends':
-		echo $twig->render('views/friends.html');
-	break;
+		case 'home':
+			echo $twig->render('views/home.html');
+		break;
 
-	case 'profil':
-		echo $twig->render('views/profil.html');
-	break;
+		case 'friends':
+			echo $twig->render('views/friends.html');
+		break;
 
-	default:
-		echo $twig->render('views/index.html');
-	break;
+		case 'profil':
+			echo $twig->render('views/profil.html');
+		break;
+
+		default:
+			echo $twig->render('views/index.html');
+		break;
+	}
 }
 
 ?>
