@@ -20,7 +20,7 @@ function road($controller, $action){
 
 /*  Toutes les pages du modele MVC  */
 $controllers = array('pages' => ['index', 'error'],
-					 'posts' => ['home', 'friends', 'profil']);
+				 'posts' => ['home', 'friends', 'profil']);
 
 /*  Vérifie si le controller fait partie de la liste de controller  */
 if (array_key_exists($controller, $controllers)) {
