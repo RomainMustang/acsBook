@@ -2,7 +2,6 @@
 class Connection {
     private $host, $username, $password, $db;
     public $pdo;
-
     public function __construct($h, $u, $p, $d) {
         $this->host     = $h;
         $this->username = $u;
@@ -10,7 +9,6 @@ class Connection {
         $this->db       = $d;
         $this->connect();
     }
-
     public function connect() {
         $this->pdo = new PDO("mysql:host={$this->host};dbname={$this->db}", $this->username, $this->password,
             [
