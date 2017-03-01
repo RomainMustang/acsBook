@@ -1,6 +1,6 @@
 <?php
 class UserModel {
-    private $nom, $prenom, $email, $pass, $error;
+    private $nom, $prenom, $email, $pass, $error = [];
 
     public function __construct($n, $pn, $e, $p) {
         $this->nom      = $n;
@@ -12,8 +12,6 @@ class UserModel {
 
     public function NewUser() {
         global $twig;
-        $this->error    = [];
-
         if ((empty($this->nom)) || (empty($this->prenom)) || (empty($this->email)) || (empty($this->pass))) {
             $this->error = [
                 'error' => 'danger',
@@ -22,17 +20,33 @@ class UserModel {
         } else if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $this->error = [
                 'error' => 'danger',
-                'message' => "L'adresse email doit être valide."
+                'message' => "L'adresse email doit être valide.",
+                'data' => [
+                    'nom' => $this->nom,
+                    'prenom' => $this->prenom,
+                    'pass' => $this->pass
+                ]
             ];
         } else if (strlen($this->pass) <= 6) {
             $this->error = [
                 'error' => 'danger',
-                'message' => 'Votre mot de passe doit être supérieur à 6 caractères.'
+                'message' => 'Votre mot de passe doit être supérieur à 6 caractères.',
+                'data' => [
+                    'nom' => $this->nom,
+                    'prenom' => $this->prenom,
+                    'mail' => $this->email
+                ]
             ];
         } else if ($this->emailTaken($this->email)) {
             $this->error = [
                 'error' => 'danger',
-                'message' => 'Cette adresse email est déjà prise!'
+                'message' => 'Cette adresse email est déjà prise!',
+                'data' => [
+                    'nom' => $this->nom,
+                    'prenom' => $this->prenom,
+                    'pass' => $this->pass
+                ]
+
             ];
         } else {
             $this->insert();
