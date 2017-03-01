@@ -25,7 +25,7 @@ class UserModel {
                 'error' => 'danger',
                 'message' => 'Tu dois remplir tous les champs'
             ];
-            echo $twig->render('login.twig', $this->error);
+            echo $twig->render('login.html', $this->error);
         } else if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $this->error = [
                 'error' => 'danger',
@@ -46,14 +46,14 @@ class UserModel {
                 'error' => 'danger',
                 'message' => "Le mot de passe est incorrect."
             ];
-            echo $twig->render('login.twig', $this->error);
+            echo $twig->render('login.html', $this->error);
         } else {
             $this->setToken($this->email);
             $this->error = [
                 'error' => 'success',
                 'message' => "Vous êtes maintenant connectés sur le site!"
             ];
-            echo $twig->render('home.twig', [
+            echo $twig->render('home.html', [
                 "name" => $this->userInfo($this->email)["prenom"],
                 "avatar" => "http://pre14.deviantart.net/e12b/th/pre/i/2012/206/0/6/fb_page_avatar___happy_by_muller_saru-d58lfe4.png"
             ]);
@@ -105,7 +105,7 @@ class UserModel {
                 'message' => 'Votre compte a bien été créée!'
             ];
         }
-        echo $twig->render('accueil.twig', $this->error);
+        echo $twig->render('accueil.html', $this->error);
     }
 
     public function insert() {
