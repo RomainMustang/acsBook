@@ -1,5 +1,9 @@
-{% extends '/layout/layout.html'%}
+{% extends 'templates/layout/layout.html'%}
 	{% block title %} Accueil {% endblock %}
 	{% block content %}
-		<h1> Hello world </h1>
+		{% if GET['mail_conn'] is defined and GET['mail_conn'] is not null %}
+			<h1> Hello world </h1>
+		{% else %}
+			<h1> Mot de passe ou adresse mail invalide </h1>
+		{% endif %}
 	{% endblock %}
