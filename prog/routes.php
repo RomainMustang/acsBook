@@ -1,10 +1,7 @@
 <?php
-
 /*  Utilise le controller que l'on a spécifié  */
 function road($controller, $action){
-
 	require_once('controllers/' . $controller . '_controller.php');
-
 	switch($controller){
 		case 'pages':
 			$controller = new PagesController();
@@ -19,18 +16,15 @@ function road($controller, $action){
 	}
 	$controller->{ $action }();
 }
-
 /*  Toutes les pages du modele MVC  */
 $controllers = array('pages' => ['index', 'error'],
 					 'posts' => ['home', 'friends', 'profil', 'register', 'login']);
-
 $models = [
     "friend" => "friends",
-    "mur" => "mur",
+    "wall" => "wall",
     "post" => "post",
     "user" => "user"
 ];
-
 foreach($models as $key => $value) {
     require 'models/' . $value . '_model.php';
     if (class_exists(ucfirst($value)."Model")) {
@@ -47,7 +41,6 @@ foreach($models as $key => $value) {
         }
     }
 }
-
 /*  Vérifie si le controller fait partie de la liste de controller  */
 if (array_key_exists($controller, $controllers)) {
 	
@@ -65,11 +58,7 @@ if (array_key_exists($controller, $controllers)) {
     
     }
 } 
-
 else {
-
 	road('pages', 'error');
-
 }
-
 ?>

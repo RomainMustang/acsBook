@@ -40,13 +40,13 @@ class UserModel {
                 'error' => 'danger',
                 'message' => "L'adresse email est associée à aucun compte."
             ];
-            echo $twig->render('login.twig', $this->error);
+            echo $twig->render('login.html', $this->error);
         } elseif (!$this->checkPass($this->email, $this->pass)) {
             $this->error = [
                 'error' => 'danger',
                 'message' => "Le mot de passe est incorrect."
             ];
-            echo $twig->render('login.html', $this->error);
+            echo $twig->render('/templates/views/login.html', $this->error);
         } else {
             $this->setToken($this->email);
             $this->error = [
@@ -96,7 +96,6 @@ class UserModel {
                     'prenom' => $this->prenom,
                     'pass' => $this->pass
                 ]
-
             ];
         } else {
             $this->insert();
@@ -105,7 +104,7 @@ class UserModel {
                 'message' => 'Votre compte a bien été créée!'
             ];
         }
-        echo $twig->render('accueil.html', $this->error);
+        echo $twig->render('/templates/views/index.html', $this->error);
     }
 
     public function insert() {

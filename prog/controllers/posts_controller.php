@@ -1,11 +1,10 @@
 <?php
 class PostsController {
     private $nom, $prenom, $email, $pwd;
-
     public function home() {
         global $twig, $user;
         if (!isset($_COOKIE["user_token"])) {
-            echo $twig->render('accueil.twig', [
+            echo $twig->render('index.html', [
                 "error" => "danger",
                 "message" => "Veuillez vous connecter pour accéder à cette page."
             ]);
@@ -13,19 +12,18 @@ class PostsController {
             $cookie = preg_replace("/[^a-zA-Z0-9s]/", "", $_COOKIE["user_token"]);
             if ((!empty($cookie)) && (is_array($user->checkCookie($cookie)))) {
                 $info = $user->checkCookie($cookie);
-                echo $twig->render("home.twig", [
+                echo $twig->render("home.html", [
                     "name" => $info["prenom"],
                     "avatar" => "http://pre14.deviantart.net/e12b/th/pre/i/2012/206/0/6/fb_page_avatar___happy_by_muller_saru-d58lfe4.png"
                 ]);
             } else {
-                echo $twig->render("accueil.twig", [
+                echo $twig->render("index.html", [
                     "error" => "danger",
                     "message" => "Veuillez vous reconnecter pour accéder à cette page."
                 ]);
             }
         }
     }
-
     public function register() {
         global $twig, $user;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -39,10 +37,9 @@ class PostsController {
                 $this->pwd
             );
         } else {
-            echo $twig->render('accueil.twig');
+            echo $twig->render('index.html');
         }
     }
-
     public function login() {
         global $twig, $user;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -54,12 +51,13 @@ class PostsController {
                 $this->pass
             );
         } else {
-            echo $twig->render('login.twig');
+            echo $twig->render('login.html');
         }
     }
-
     public function error() {
         global $twig;
-        echo $twig->render('error.twig');
+        echo $twig->render('error.html');
     }
 }
+
+?>
