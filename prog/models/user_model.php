@@ -34,7 +34,7 @@ class UserModel {
                     'pass' => $this->pass
                 ]
             ];
-            echo $twig->render('login.twig', $this->error);
+            echo $twig->render('login.html', $this->error);
         } else if (!is_array($this->userInfo($this->email))) {
             $this->error = [
                 'error' => 'danger',
