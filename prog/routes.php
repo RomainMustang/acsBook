@@ -1,38 +1,47 @@
 <?php
 
-require "vendor/autoload.php";
+/*  Utilise le controller que l'on a spécifié  */
+function road($controller, $action){
 
-/*  page par défaut  */
-$page = 'index';
+	require_once('controllers/' . $controller . '_controller.php');
 
-if(isset($_GET['p'])) {
-	$page = $_GET['p'];
+	switch($controller){
+		case 'pages':
+			$controller = new PagesController();
+		break;
+		case 'posts':
+			$controller = new PostsController();
+		break;
+	}
+	$controller->{ $action }();
 }
 
-$loader = new Twig_Loader_Filesystem(__DIR__ . '/templates');
-$twig   = new Twig_Environment($loader, [
-	'cache' => false
+/*  Toutes les pages du modele MVC  */
+$controllers = array('pages' => ['index', 'error'],
+					 'posts' => ['home', 'friends', 'profil']);
 
-]); 
+/*  Vérifie si le controller fait partie de la liste de controller  */
+if (array_key_exists($controller, $controllers)) {
+	
+	/*  Vérifie si l'action est dans la liste du controller  */
+	if (in_array($action, $controllers[$controller])) {
+    
+    /*  Appel le controller  */
+    road($controller, $action);
+    } 
+    
+    /*  Sinon affiche une page d'erreur  */
+    else {
+    
+      road('pages', 'error');
+    
+    }
+} 
 
-/*  Chargement de la page choisie  */
-switch ($page){
+else {
 
-	case 'home':
-		echo $twig->render('home.html');
-	break;
+	road('pages', 'error');
 
-	case 'friends':
-		echo $twig->render('friends.html');
-	break;
-
-	case 'profil':
-		echo $twig->render('profil.html');
-	break;
-
-	default:
-		echo $twig->render('index.html');
-	break;
 }
 
 ?>
