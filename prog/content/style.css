@@ -23,16 +23,47 @@ html{
    	margin-bottom: 20px;
 }
 
+@media (min-width: 768px) and (max-width: 799px){
+  #burger{
+    display: none;
+  }
+
+  #register{
+    right: 0px;
+  }
+
+  #pwd, #mail, #nom, #prenom{
+    width: 300px;
+    margin: auto;
+  }
+  
+  .panel-body{
+    text-align: center;
+  }
+}
+
 @media (min-width: 322px) and (max-width: 767px){
 	#register{
-		right : -45px;
+		right : 0px;
 	}
+  
+  #tagi, #burger{
+    display : none;
+  }
+  
+  .panel-body{
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 321px){
 	#register{
 		right : -27px;
 	}
+  
+  #tagi, #burger{
+    display : none;
+  }
 }
 
 /* sssssssssssssssssssssssssssssssssssssssssssssssssssssssss*/
