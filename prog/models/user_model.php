@@ -53,6 +53,7 @@ class UserModel {
                 'error' => 'success',
                 'message' => "Vous êtes maintenant connectés sur le site!"
             ];
+            header("location: ?controller=posts&action=home");
             echo $twig->render('/templates/views/home.html', [
                 "name" => $this->userInfo($this->email)["prenom"],
                 "avatar" => "http://pre14.deviantart.net/e12b/th/pre/i/2012/206/0/6/fb_page_avatar___happy_by_muller_saru-d58lfe4.png"
