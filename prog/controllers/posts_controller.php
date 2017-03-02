@@ -58,7 +58,7 @@ class PostsController {
         global $twig;
         if (isset($_COOKIE["user_token"])) {
             setcookie("user_token", "", time()-3600);
-            echo $twig->render('accueil.twig', [
+            echo $twig->render('templates/views/index.html', [
                 "error" => "info",
                 "message" => "Merci de votre visite, à la prochaine."
             ]);
