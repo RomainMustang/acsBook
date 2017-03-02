@@ -18,7 +18,7 @@ function road($controller, $action){
 }
 /*  Toutes les pages du modele MVC  */
 $controllers = array('pages' => ['index', 'error'],
-					 'posts' => ['home', 'friends', 'profil', 'register', 'login', 'logout']);
+					 'posts' => ['home', 'friends', 'profil', 'register', 'login']);
 $models = [
     "friend" => "friends",
     "wall" => "wall",
@@ -35,8 +35,11 @@ foreach($models as $key => $value) {
             case "friend":
                 $friend = new FriendsModel();
                 break;
+            case "wall":
+                $wall = new WallModel();
+                break;
             default:
-                die('Failed to load some class');
+                die('Failed to load some class'.$key);
                 break;
         }
     }

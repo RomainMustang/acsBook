@@ -25,7 +25,7 @@ class UserModel {
                 'error' => 'danger',
                 'message' => 'Tu dois remplir tous les champs'
             ];
-            echo $twig->render('login.html', $this->error);
+            echo $twig->render('/templates/views/home.html', $this->error);
         } else if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $this->error = [
                 'error' => 'danger',
@@ -34,13 +34,13 @@ class UserModel {
                     'pass' => $this->pass
                 ]
             ];
-            echo $twig->render('login.html', $this->error);
+            echo $twig->render('/templates/views/home.html', $this->error);
         } else if (!is_array($this->userInfo($this->email))) {
             $this->error = [
                 'error' => 'danger',
                 'message' => "L'adresse email est associée à aucun compte."
             ];
-            echo $twig->render('login.html', $this->error);
+            echo $twig->render('/templates/views/home.html', $this->error);
         } elseif (!$this->checkPass($this->email, $this->pass)) {
             $this->error = [
                 'error' => 'danger',
@@ -53,7 +53,7 @@ class UserModel {
                 'error' => 'success',
                 'message' => "Vous êtes maintenant connectés sur le site!"
             ];
-            echo $twig->render('home.html', [
+            echo $twig->render('/templates/views/home.html', [
                 "name" => $this->userInfo($this->email)["prenom"],
                 "avatar" => "http://pre14.deviantart.net/e12b/th/pre/i/2012/206/0/6/fb_page_avatar___happy_by_muller_saru-d58lfe4.png"
             ]);
