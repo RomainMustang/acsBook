@@ -1,64 +1,76 @@
 html, body{
-	height : 100%;
-	margin : 0;
-	padding:0;
+	height  : 100%;
+	margin  : 0;
+	padding :0;
   position: relative;
+}
+
+.button{
+  background-color: white;
+  border          : 1px solid rgba(180, 167, 214, 0.5);
 }
 h1{
   margin-top: 0;
   text-align: center;
+  color     : dimgrey;
+}
+h4{
+  color: dimgrey;
 }
 .groupMessage{
   margin-left: 20%;
-  margin-top: -400px;
+  margin-top : -39.4%;
 }
 .message{
-  padding: 1% 1% 1% 1%;
-  text-align: justify;
-  border:1px solid black;
-    background-color: rgba(180, 167, 214, 0.5);
+  padding         : 1% 1% 1% 1%;
+  text-align      : justify;
+  border          : 1px solid rgba(180, 167, 214, 0.5);
+  background-color: rgba(180, 167, 214, 0.5);
 }
 a, a:hover{
   text-decoration: none;
-  color: black;
+  color          : dimgrey;
 }
 .espace{
   padding-top: 4%;
-  font-size: 90%;
+  font-size  : 90%;
   font-weight: normal;
+  color      : dimgrey;
 }
 .space{
-  font-size: 90%;
+  font-size  : 90%;
   font-weight: normal;
+  color      : dimgrey;
 }
 .hauteur{
-  margin-top: 10%;
-  font-weight: bold;
+  margin-top  : 10%;
+  font-weight : bold;
   padding-left: 20px;
-  font-size: 150%;
+  font-size   : 150%;
+  color       : dimgrey;
 }
 #placement{
 
-  border: 1px solid black;
-  width : 25%;
-  height: 450px;
-  padding: 1% 1% 1% 1%;
-  margin-left: -320px;
+  border     : 4px solid rgba(180, 167, 214, 0.5);
+  width      : 25%;
+  height     : 450px;
+  padding    : 1% 1% 1% 1%;
+  margin-left: -30%;
+  margin-top :  3%;
 }
 img{
   height: 35px;
-  width: 35px;
+  width : 35px;
 }
 .violet{
-	background-color: rgba(180, 167, 214, 0.5);
+	background-color : rgba(180, 167, 214, 0.5);
 }
 
 .footer{
-	width: 100%;
+	width     : 100%;
 	text-align: center;
-	vertical-align: middle;
-  position:absolute;
-  bottom: 0;
+  position  : absolute;
+  bottom    : 0;
 }
 
 #register{
@@ -66,7 +78,7 @@ img{
 }
 
 .friends{
-   	padding-top: 15px;
+   	padding-top  : 15px;
    	margin-bottom: 20px;
 }
 
@@ -75,15 +87,15 @@ img{
 
 @media (min-width: 768px) and (max-width: 799px){
   #burger{
-    display: none;
+    display : none;
   }
 
   #register{
-    right: 0px;
+    right : 0px;
   }
 
   #pwd, #mail, #nom, #prenom{
-    width: 300px;
+    width : 300px;
     margin: auto;
   }
   
@@ -216,7 +228,7 @@ img{
 .st17 {
   font-family: 'Open Sans';
   font-weight: 600;
-  fill: #a0a0a0;
+  fill       : #a0a0a0;
 }
 
 .st18 {
