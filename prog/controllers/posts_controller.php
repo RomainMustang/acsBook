@@ -63,7 +63,7 @@ class PostsController {
                 "message" => "Merci de votre visite, à la prochaine."
             ]);
         } else {
-            echo $twig->render('accueil.twig');
+            echo $twig->render('templates/views/index.html');
         }
     }
     public function error() {
