@@ -1,93 +1,94 @@
 {% extends 'templates/layout/accueil.html' %}
     {% block title %} Accueil {% endblock %}
     {% block content %}
+<div class=" col-md-offset-1 col-md-10">
+    <div class="col-md-5">
+        <h2>< ACS Book /></h2>
+        <h2>La communication entre développeurs!</h2>
+        <div>
+            <canvas id=resCanvas width="2000" height="600" style="width: 100%" class="fade-in"></canvas>
+        </div>
 
-<div class="col-md-6">
-    <h2>ACS Book</h2>
-    <h2>La communication <br />entre<br/> développeurs!</h2>
-    <div>
-        <canvas id=resCanvas width="2000" height="600" style="width: 100%" class="fade-in"></canvas>
+        <svg id="tagi" x="0px" y="0px" width="920px" height="324px" viewBox="0 0 920 324">
+            <text transform="matrix(1 0 0 1 497.4292 293.7129)" class="st17 st0">WINDOWS</text>
+            <text id="XMLID_2_" transform="matrix(1 0 0 1 433.0854 82.7407)" class="st17 st8">PHP</text>
+            <text transform="matrix(1 0 0 1 188.187 144.3555)" class="st5 st17 st22">LINUX</text>
+            <text transform="matrix(1 0 0 1 380.8301 145.1353)" class="st17 st29">MYSQL</text>
+            <text transform="matrix(1 0 0 1 378.8799 54.6626)" class="st5 st28 st6">TWIG</text>
+            <text transform="matrix(1 0 0 1 247.0718 191.1514)" class="st5 st28 st18">DESIGN</text>
+            <text transform="matrix(1 0 0 1 0 129.9268)" class="st5 st28 st30">EQUIPES</text>
+            <text transform="matrix(1 0 0 1 250.9712 76.1118)" class="st5 st28 st14">MODERNIZR</text>
+            <text transform="matrix(1 0 0 1 229.9131 169.5225)" class="st5 st28 st25">APPLICATIONS</text>
+            <text transform="matrix(1 0 0 1 472.4722 105.3691)" class="st5 st28 st27">PHPMYADMIN</text>
+            <text transform="matrix(1 0 0 1 128.9111 264.4697)" class="st5 st28 st26">REFERENCEMENT</text>
+            <text transform="matrix(1 0 0 1 191.3057 102.2393)" class="st5 st28 st24">DASHBOARD</text>
+            <text transform="matrix(1 0 0 1 318.4351 289.0342)" class="st5 st28 st1">SYMPHONY</text>
+            <text transform="matrix(1 0 0 1 740.77 211.4307)" class="st5 st28 st21">MATERIALIZE</text>
+            <text transform="matrix(1 0 0 1 683.0542 230.5381)" class="st5 st28 st19">RESPONSIVE</text>
+            <text transform="matrix(0.9244 0 0 1 632.7485 97.0288)" class="st5 st28 st16">BASE DE DONNEES</text>
+            <text transform="matrix(1 0 0 1 663.5552 139.2856)" class="st5 st28 st3">PERL</text>
+            <text transform="matrix(1 0 0 1 251.3608 240.4502)" class="st5 st17 st31">DEVELOPPEMENT</text>
+            <text transform="matrix(1 0 0 1 217.0439 54.2744)" class="st5 st28 st11">FRAMEWORKS</text>
+            <text transform="matrix(1 0 0 1 119.9526 240.2871)" class="st5 st28 st13">PROJETS</text>
+            <text transform="matrix(1 0 0 1 444.0044 34.7744)" class="st5 st17 st4">BOOTSTRAP</text>
+            <text transform="matrix(1 0 0 1 125.4019 129.147)" class="st5 st28 st15">CMS</text>
+            <text transform="matrix(1 0 0 1 350.8022 207.5303)" class="st17 st2">JAVASCRIPT</text>
+            <text transform="matrix(1 0 0 1 81.5249 212.6006)" class="st17 st9">C++</text>
+            <text transform="matrix(1 0 0 1 545.0063 316.7061)" class="st5 st28 st23">HTML5</text>
+            <text transform="matrix(1 0 0 1 638.2075 66.7529)" class="st5 st28 st12">CSS3</text>
+            <text transform="matrix(1 0 0 1 185.8467 282.4043)" class="st5 st28 st10">SCRAPPING</text>
+            <text transform="matrix(1 0 0 1 34.1494 150.5947)" class="st5 st28 st7">RUBY</text>
+        </svg>
     </div>
-
-    <svg id="tagi" x="0px" y="0px" width="920px" height="324px" viewBox="0 0 920 324">
-        <text transform="matrix(1 0 0 1 497.4292 293.7129)" class="st17 st0">WINDOWS</text>
-        <text id="XMLID_2_" transform="matrix(1 0 0 1 433.0854 82.7407)" class="st17 st8">PHP</text>
-        <text transform="matrix(1 0 0 1 188.187 144.3555)" class="st5 st17 st22">LINUX</text>
-        <text transform="matrix(1 0 0 1 380.8301 145.1353)" class="st17 st29">MYSQL</text>
-        <text transform="matrix(1 0 0 1 378.8799 54.6626)" class="st5 st28 st6">TWIG</text>
-        <text transform="matrix(1 0 0 1 247.0718 191.1514)" class="st5 st28 st18">DESIGN</text>
-        <text transform="matrix(1 0 0 1 0 129.9268)" class="st5 st28 st30">EQUIPES</text>
-        <text transform="matrix(1 0 0 1 250.9712 76.1118)" class="st5 st28 st14">MODERNIZR</text>
-        <text transform="matrix(1 0 0 1 229.9131 169.5225)" class="st5 st28 st25">APPLICATIONS</text>
-        <text transform="matrix(1 0 0 1 472.4722 105.3691)" class="st5 st28 st27">PHPMYADMIN</text>
-        <text transform="matrix(1 0 0 1 128.9111 264.4697)" class="st5 st28 st26">REFERENCEMENT</text>
-        <text transform="matrix(1 0 0 1 191.3057 102.2393)" class="st5 st28 st24">DASHBOARD</text>
-        <text transform="matrix(1 0 0 1 318.4351 289.0342)" class="st5 st28 st1">SYMPHONY</text>
-        <text transform="matrix(1 0 0 1 740.77 211.4307)" class="st5 st28 st21">MATERIALIZE</text>
-        <text transform="matrix(1 0 0 1 683.0542 230.5381)" class="st5 st28 st19">RESPONSIVE</text>
-        <text transform="matrix(0.9244 0 0 1 632.7485 97.0288)" class="st5 st28 st16">BASE DE DONNEES</text>
-        <text transform="matrix(1 0 0 1 663.5552 139.2856)" class="st5 st28 st3">PERL</text>
-        <text transform="matrix(1 0 0 1 251.3608 240.4502)" class="st5 st17 st31">DEVELOPPEMENT</text>
-        <text transform="matrix(1 0 0 1 217.0439 54.2744)" class="st5 st28 st11">FRAMEWORKS</text>
-        <text transform="matrix(1 0 0 1 119.9526 240.2871)" class="st5 st28 st13">PROJETS</text>
-        <text transform="matrix(1 0 0 1 444.0044 34.7744)" class="st5 st17 st4">BOOTSTRAP</text>
-        <text transform="matrix(1 0 0 1 125.4019 129.147)" class="st5 st28 st15">CMS</text>
-        <text transform="matrix(1 0 0 1 350.8022 207.5303)" class="st17 st2">JAVASCRIPT</text>
-        <text transform="matrix(1 0 0 1 81.5249 212.6006)" class="st17 st9">C++</text>
-        <text transform="matrix(1 0 0 1 545.0063 316.7061)" class="st5 st28 st23">HTML5</text>
-        <text transform="matrix(1 0 0 1 638.2075 66.7529)" class="st5 st28 st12">CSS3</text>
-        <text transform="matrix(1 0 0 1 185.8467 282.4043)" class="st5 st28 st10">SCRAPPING</text>
-        <text transform="matrix(1 0 0 1 34.1494 150.5947)" class="st5 st28 st7">RUBY</text>
-    </svg>
-</div>
-<div class="col-md-6">
-    <div class="panel panel-default">
-        <div class="panel-body violet">
-            <h2 class="text-center">Inscription rapide et 100% gratuite</h2>
-            <div style="padding-top: 5%"></div>
-            <form class="col-md-12" method="POST" action="?controller=posts&action=register">
-                {% if message %}
-                    <div class="alert alert-{{ error }}">
-                        {{ message }}
+    <div class="col-md-offset-1 col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-body violet">
+                <h2 class="text-center">Inscription rapide et 100% gratuite</h2>
+                <div style="padding-top: 5%"></div>
+                <form class="col-md-12" method="POST" action="?controller=posts&action=register">
+                    {% if message %}
+                        <div class="alert alert-{{ error }}">
+                            {{ message }}
+                        </div>
+                    {% endif %}
+                    <div class="form-group col-md-12">
+                        <div class="col-md-3">
+                            <label for="firstName">Prénom :</label>
+                        </div>
+                        <div class="col-md-offset-2 col-md-7">
+                            <input type="text" class="form-control" id="prenom" name="prenom" value="{{ data['prenom'] }}" required>
+                        </div>
                     </div>
-                {% endif %}
-                <div class="form-group col-md-12">
-                    <div class="col-md-3">
-                        <label for="firstName">Prénom :</label>
+                    <div class="form-group col-md-12">
+                        <div class="col-md-3">
+                            <label for="name">Nom :</label>
+                        </div>
+                        <div class="col-md-offset-2 col-md-7">
+                            <input type="text" class="form-control" id="nom" name="nom" value="{{ data['nom'] }}" required>
+                        </div>
                     </div>
-                    <div class="col-md-offset-2 col-md-7">
-                        <input type="text" class="form-control" id="prenom" name="prenom" value="{{ data['prenom'] }}" required>
+                    <div class="form-group col-md-12">
+                        <div class="col-md-3">
+                            <label for="mail">E-mail :</label>
+                        </div>
+                        <div class="col-md-offset-2 col-md-7">
+                            <input type="email" class="form-control" id="mail" name="mail" value="{{ data['mail'] }}" required>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group col-md-12">
-                    <div class="col-md-3">
-                        <label for="name">Nom :</label>
+                    <div class="form-group col-md-12">
+                        <div class="col-md-4">
+                            <label for="pwd">Mot de passe :</label>
+                        </div>
+                        <div class="col-md-offset-1 col-md-7">
+                            <input type="password" class="form-control" id="pwd" name="pwd" value="{{ data['pass'] }}" required>
+                        </div>
                     </div>
-                    <div class="col-md-offset-2 col-md-7">
-                        <input type="text" class="form-control" id="nom" name="nom" value="{{ data['nom'] }}" required>
+                    <div class="form-group col-md-12">
+                        <button type="submit" id="register" class="col-md-offset-8 col-md-3">Enregistrer</button>
                     </div>
-                </div>
-                <div class="form-group col-md-12">
-                    <div class="col-md-3">
-                        <label for="mail">E-mail :</label>
-                    </div>
-                    <div class="col-md-offset-2 col-md-7">
-                        <input type="email" class="form-control" id="mail" name="mail" value="{{ data['mail'] }}" required>
-                    </div>
-                </div>
-                <div class="form-group col-md-12">
-                    <div class="col-md-4">
-                        <label for="pwd">Mot de passe :</label>
-                    </div>
-                    <div class="col-md-offset-1 col-md-7">
-                        <input type="password" class="form-control" id="pwd" name="pwd" value="{{ data['pass'] }}" required>
-                    </div>
-                </div>
-                <div class="form-group col-md-12">
-                    <button type="submit" id="register" class="col-md-offset-8 col-md-3">Enregistrer</button>
-                </div>
-            </form>
-            <p style="margin-top: 2%">En vous enregistrant, vous acceptez les termes et conditions générales d'utilisations</p>
+                </form>
+                <p style="margin-top: 2%">En vous enregistrant, vous acceptez les termes et conditions générales d'utilisations</p>
+            </div>
         </div>
     </div>
 </div>
