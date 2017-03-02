@@ -3,7 +3,32 @@ html{
 	margin : 0;
 	padding:0;
 }
+h1{
+  margin-top: 0;
+}
+a, a:hover{
+  text-decoration: none;
+  color: black;
+}
+.espace{
+  padding-top: 4%;
+}
+.hauteur{
+  margin-top: 10%;
+  font-weight: bold;
+  padding-left: 20px;
+}
+#placement{
 
+  border: 1px solid black;
+  width : 25%;
+  height: 65% ;
+  padding: 1% 1% 1% 1%;
+}
+img{
+  height: 35px;
+  width: 35px;
+}
 .violet{
 	background-color: rgba(180, 167, 214, 0.5);
 }
@@ -22,6 +47,9 @@ html{
    	padding-top: 15px;
    	margin-bottom: 20px;
 }
+
+
+
 
 @media (min-width: 768px) and (max-width: 799px){
   #burger{
@@ -43,9 +71,9 @@ html{
 }
 
 @media (min-width: 322px) and (max-width: 767px){
-	#register{
-		right : 0px;
-	}
+  #register{
+    right : 0px;
+  }
   
   #tagi, #burger{
     display : none;
@@ -57,14 +85,15 @@ html{
 }
 
 @media screen and (max-width: 321px){
-	#register{
-		right : -27px;
-	}
+  #register{
+    right : -27px;
+  }
   
   #tagi, #burger{
     display : none;
   }
 }
+
 
 /* sssssssssssssssssssssssssssssssssssssssssssssssssssssssss*/
  svg text.blink {
