@@ -54,6 +54,18 @@ class PostsController {
             echo $twig->render('templates/views/login.html');
         }
     }
+    public function logout() {
+        global $twig;
+        if (isset($_COOKIE["user_token"])) {
+            setcookie("user_token", "", time()-3600);
+            echo $twig->render('accueil.twig', [
+                "error" => "info",
+                "message" => "Merci de votre visite, à la prochaine."
+            ]);
+        } else {
+            echo $twig->render('accueil.twig');
+        }
+    }
     public function error() {
         global $twig;
         echo $twig->render('templates/views/error.html');
