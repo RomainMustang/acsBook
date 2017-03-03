@@ -19,8 +19,9 @@
                     <a class="navbar-brand" href="#">ACSBook</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#"><img src="https://avatars3.githubusercontent.com/u/14977438?v=3&s=460" style="width: 25px; height: 25px"> ACS</a></li>                    </ul>
+                    <ul id="imageProfil" class="nav navbar-nav">
+                        <li><a href="#"><img src="https://avatars3.githubusercontent.com/u/14977438?v=3&s=460" style="width: 25px; height: 25px"> ACS</a></li>
+                    </ul>
                     <div class="col-sm-3 col-md-3 pull-center">
                         <form class="navbar-form" role="search">
                             <div class="input-group">
@@ -39,18 +40,18 @@
                             <ul class="dropdown-menu">
                                 <li><a href="#">Profil</a></li>
                                 <li><a href="?controller=posts&action=logout">Déconnexion</a></li>
+                                <li id="liFriends"><a href="?controller=posts&action=friends">Liste d'amis</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div><!--/.container-fluid -->
         </nav>
-        <div class="container">
+        <div class="container-fluid">
             {% block content %} {% endblock %}
-        </div>
-
-        <div class="footer violet">
-            <p>Site créer et proposé par Sarah, Clément et Romain</p>
+            <div class="footer violet">
+                <p>Site créer et proposé par Sarah, Clément et Romain</p>
+            </div>
         </div>
     </body>
 </html>
