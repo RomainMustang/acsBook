@@ -17,8 +17,23 @@ function road($controller, $action){
 	$controller->{ $action }();
 }
 /*  Toutes les pages du modele MVC  */
-$controllers = array('pages' => ['index', 'error'],
-					 'posts' => ['home', 'friends', 'profil', 'register', 'login']);
+$controllers = [
+    "pages" => [
+        "index",
+        "error"
+    ],
+    "posts" => [
+        "home",
+        "login",
+        "register",
+        "profil",
+        "friends",
+        "logout",
+        "wall",
+        "wallView"
+    ]
+];
+
 $models = [
     "friend" => "friends",
     "wall" => "wall",
