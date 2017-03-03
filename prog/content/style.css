@@ -1,10 +1,10 @@
 html, body{
-	height  : 100%;
-	margin  : 0;
-	padding :0;
-  position: relative;
+	height     : 100%;
+	margin     : 0;
+	padding    : 0;
+  position   : relative;
+  font-family: 'ROBOTO';
 }
-
 .button{
   background-color: white;
   border          : 1px solid rgba(180, 167, 214, 0.5);
@@ -50,13 +50,12 @@ a, a:hover{
   color       : dimgrey;
 }
 #placement{
-
   border     : 4px solid rgba(180, 167, 214, 0.5);
   width      : 25%;
   height     : 450px;
   padding    : 1% 1% 1% 1%;
   margin-left: -30%;
-  margin-top :  3%;
+  margin-top : 3%;
 }
 img{
   height: 35px;
@@ -82,9 +81,7 @@ img{
    	margin-bottom: 20px;
 }
 
-
-
-
+/* RESPONSIVE */
 @media (min-width: 768px) and (max-width: 799px){
   #burger{
     display : none;
@@ -128,29 +125,25 @@ img{
   }
 }
 
-
-/* sssssssssssssssssssssssssssssssssssssssssssssssssssssssss*/
+/* ANIMATION SUR LA PAGE D'ACCUEIL*/
  svg text.blink {
   animation: blink 2s ease-out;
 }
-
 #tagi {
-  width: 95%;
+  width     : 95%;
   margin-top: -35%; 
 }
 
 @keyframes blink {
   0% {
-    text-shadow: 0 0 15px rgba(180, 167, 214, 0.5)/*rgba(226, 25, 45, 0)*/;
+    text-shadow: 0 0 15px rgba(180, 167, 214, 0.5);
   }
   20% {
-    fill: rgba(180, 167, 214, 0.5)/*rgba(226, 25, 45, 1)*/;
-    text-shadow: -5px -5px 20px rgba(180, 167, 214, 0.5)/*rgba(226, 25, 45, 0.8)*/, 5px -5px 20px rgba(180, 167, 214, 0.5)/*rgba(226, 25, 45, 0.8)*/, 5px 5px 20px /*rgba(226, 25, 45, 0.8)*/, -5px 5px 20px rgba(180, 167, 214, 0.5)/*rgba(226, 25, 45, 0.8)*/;
-    ;
+    fill: rgba(180, 167, 214, 0.5);
+    text-shadow: -5px -5px 20px rgba(180, 167, 214, 0.5), 5px -5px 20px rgba(180, 167, 214, 0.5), 5px 5px 20px, -5px 5px 20px rgba(180, 167, 214, 0.5);
   }
   30% {
-    fill:rgba(180, 167, 214, 0.5)/* rgba(226, 25, 45, 1)*/;
-    /*-5px -5px 20px rgba(226, 25, 45, 0.8), 5px -5px 20px rgba(226, 25, 45, 0.8), 5px 5px 20px rgba(226, 25, 45, 0.8), -5px 5px 20px rgba(226, 25, 45, 0.8);*/
+    fill:rgba(180, 167, 214, 0.5);
   }
   100% {
     text-shadow: 0 0 15px rgba(226, 25, 45, 0);
@@ -169,11 +162,7 @@ img{
   font-size: 82px;
 }
 
-.st3 {
-  font-size: 41px;
-}
-
-.st4 {
+.st3, .st4{
   font-size: 41px;
 }
 
@@ -181,11 +170,7 @@ img{
   fill: #808080;
 }
 
-.st6 {
-  font-size: 24px;
-}
-
-.st7 {
+.st6, .st7 {
   font-size: 24px;
 }
 
@@ -197,31 +182,15 @@ img{
   font-size: 86px;
 }
 
-.st10 {
+.st10, .st11 {
   font-size: 18px;
 }
 
-.st11 {
-  font-size: 18px;
-}
-
-.st12 {
+.st12, .st13, .st14 {
   font-size: 25px;
 }
 
-.st13 {
-  font-size: 25px;
-}
-
-.st14 {
-  font-size: 25px;
-}
-
-.st15 {
-  font-size: 32px;
-}
-
-.st16 {
+.st15, .st16 {
   font-size: 32px;
 }
 
@@ -231,11 +200,7 @@ img{
   fill       : #a0a0a0;
 }
 
-.st18 {
-  font-size: 22px;
-}
-
-.st19 {
+.st18, .st19 {
   font-size: 22px;
 }
 
@@ -259,28 +224,20 @@ img{
   font-size: 33px;
 }
 
-.st25 {
+.st25, st30 {
   font-size: 20px;
 }
 
-.st26 {
-  font-size: 23px;
-}
-
-.st27 {
+.st26, .st27 {
   font-size: 23px;
 }
 
 .st28 {
-  font-family: 'HELVETICA';
+  font-family: 'ROBOTO';
 }
 
 .st29 {
   font-size: 54px;
-}
-
-.st30 {
-  font-size: 20px;
 }
 
 .st31 {
