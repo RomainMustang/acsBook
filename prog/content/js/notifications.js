@@ -30,7 +30,7 @@ $(document).ready(function() {
 
     function saveMessage(message, id) {
         $.ajax({
-            url: 'http://localhost/Mvc/index.php?controller=posts&action=wall',
+            url: '?controller=posts&action=wall',
             method: 'POST',
             data: {
                 message: message,
@@ -44,7 +44,7 @@ $(document).ready(function() {
     function loadWall() {
         var id = $("#id").val();
         $.ajax({
-            url: 'http://localhost/Mvc/index.php?controller=posts&action=wallView',
+            url: '?controller=posts&action=wallView',
             method: 'POST',
             data: {
                 id: id
