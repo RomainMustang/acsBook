@@ -15,7 +15,7 @@ class PostsController {
                 echo $twig->render("templates/views/home.html", [
                     "id" => $info["id"],
                     "name" => $info["prenom"],
-                    "avatar" => "http://i.imgur.com/xWhH1Xp.png"
+                    "avatar" => $info["photos"]
                 ]);
             } else {
                 echo $twig->render("templates/views/index.html", [
