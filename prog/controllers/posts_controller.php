@@ -4,7 +4,7 @@ class PostsController {
     public function home() {
         global $twig, $user;
         if (!isset($_COOKIE["user_token"])) {
-            echo $twig->render('accueil.twig', [
+            echo $twig->render('templates/views/index.html', [
                 "error" => "danger",
                 "message" => "Veuillez vous connecter pour accéder à cette page."
             ]);
@@ -12,13 +12,13 @@ class PostsController {
             $cookie = preg_replace("/[^a-zA-Z0-9s]/", "", $_COOKIE["user_token"]);
             if ((!empty($cookie)) && (is_array($user->checkCookie($cookie)))) {
                 $info = $user->checkCookie($cookie);
-                echo $twig->render("home.twig", [
+                echo $twig->render("templates/views/home.html", [
                     "id" => $info["id"],
                     "name" => $info["prenom"],
                     "avatar" => "http://i.imgur.com/xWhH1Xp.png"
                 ]);
             } else {
-                echo $twig->render("accueil.twig", [
+                echo $twig->render("templates/views/index.html", [
                     "error" => "danger",
                     "message" => "Veuillez vous reconnecter pour accéder à cette page."
                 ]);
