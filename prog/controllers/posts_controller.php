@@ -90,6 +90,27 @@ class PostsController {
             );
         }
     }
+    public function wallView() {
+        global $wall;
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            foreach($_POST as $key => $value) {
+                $this->$key = htmlspecialchars($value);
+            }
+            if (!empty($this->id)) {
+                $wall->getMsgAll($this->id);
+            } else {
+                die(json_encode([
+                    'error' => true,
+                    'message' => 'ID is missing'
+                ], JSON_PRETTY_PRINT));
+            }
+        } else {
+            die(json_encode([
+                'error' => true,
+                'message' => 'GET not supported'
+            ], JSON_PRETTY_PRINT));
+        }
+    }
     public function error() {
         global $twig;
         echo $twig->render('templates/views/error.html');
