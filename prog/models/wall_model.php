@@ -1,12 +1,14 @@
 <?php
 class WallModel{
     public $message, $date, $id_user;
+
     public function setMsg($message, $id) {
         $this->message  = $message;
         $this->date     = time();
         $this->id_user  = $id;
         $this->stockMsg();
     }
+
     public function stockMsg() {
         global $datab;
         $query      = "INSERT INTO posts (message, date, id_utilisateur) VALUES(:message, NOW(), :id_utilisateur)";
@@ -15,6 +17,7 @@ class WallModel{
         $execute->bindParam(':id_utilisateur', $this->id_user);
         return $execute->execute();
     }
+
     public function getMsg($id){
         global $datab;
         $info   = [];
@@ -26,27 +29,28 @@ class WallModel{
             $info[] = [
                 "id" => $value["id"],
                 "message" => $value["message"],
-                "date" => $value["date"],
-                "id_util" => $value["id_utilisateur"]
+                "date" => $value["date"]
             ];
         }
         return sizeof($info)  == 0 ? false : print json_encode($info);
     }
 
     public function getMsgAll($id){
-        global $datab, $user;
+        global $datab, $user, $friend;
         $info   = [];
-        $query  = $datab->pdo->prepare("SELECT * from posts ORDER by id DESC");
-        $query->bindParam(':id', $id);
-        $query->execute();
+        $query  = $datab->pdo->query("SELECT * from posts ORDER by id DESC");
         $fetch  = $query->fetchAll();
         foreach($fetch as $key => $value) {
-            $info[] = [
-                "id" => $value["id"],
-                "message" => $value["message"],
-                "date" => $this->time_elapsed_string($value["date"]),
-                "id_util" => $value["id_utilisateur"]
-            ];
+            if (($friend->getFriendStatus($id, $value["id_utilisateur"]) !== false || $id == $value["id_utilisateur"])) {
+                $info[] = [
+                    "id" => $value["id"],
+                    "message" => $value["message"],
+                    "date" => $this->time_elapsed_string($value["date"]),
+                    "nom_util" => $user->getNameById($value["id_utilisateur"]),
+                    "id_util" => $value["id_utilisateur"],
+                    "avatar" => $user->getInfoById($value["id_utilisateur"])["photos"]
+                ];
+            }
         }
         return sizeof($info)  == 0 ? false : print json_encode($info);
     }
