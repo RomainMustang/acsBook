@@ -132,7 +132,7 @@ class PostsController {
         }
     }
 
-    public function friends() {
+    public function friend() {
         global $friend;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             foreach($_POST as $key => $value) {
