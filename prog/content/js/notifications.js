@@ -99,8 +99,11 @@ $(document).ready(function() {
                         $("#actu").html(panel);
                     }
                 }, 500);
+            $(".footer").css("position", "relative");
+                $(".footer").css("bottom", "0");
             } catch (e) {
-                $("#actu").html('Il y a encore rien à voir ici.');
+                $("#actu").html('Vos amis ne publient rien.');
+                $(".footer").css("position", "fixed");
             }
 
         });
