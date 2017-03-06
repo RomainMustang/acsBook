@@ -5,6 +5,7 @@ $(document).ready(function() {
     });
 
     $("#friend").on('click', function () {
+        loadFriendBadge();
         loadFriend();
     });
 
@@ -34,13 +35,14 @@ $(document).ready(function() {
     loadFriendBadge();
     loadWall();
     loadNotifBadge();
+    loadFriendList();
 
     /* FUNCTION FOR SHITS */
 
     function AddOrRemoveFriend(classe, id1, id2) {
         if ((classe.length == 0) || (isNaN(id1)) || (isNaN(id2))) return false;
         $.ajax({
-            url : '?controller=posts&action=friends',
+            url : '?controller=posts&action=friend',
             method: 'POST',
             data: {
                 id1: id1,
@@ -48,12 +50,7 @@ $(document).ready(function() {
                 option: classe == "accept" ? 2 : 0
             }
         }).done(function(response) {
-           var json = JSON.parse(response);
-            if (json["error"] == false) {
-                loadFriendBadge();
-            } else {
-                console.log("fail ...");
-            }
+            loadFriendBadge();
         });
 
     }
@@ -95,15 +92,13 @@ $(document).ready(function() {
                         panel += '<div class="media-body panel-body">';
                         panel += '<h4 class="media-heading">' + json[js]["nom_util"] + ' <small><i class="glyphicon glyphicon-time"></i> ' + json[js]["date"] + '</i></small></h4>';
                         panel += '<span style="white-space: pre-line;">' + json[js]["message"] + ' </span>';
-                        panel += '</div> </div></div>';
+                        panel += '</div>';
+                        panel += '</div></div>';
                         $("#actu").html(panel);
                     }
                 }, 500);
-            $(".footer").css("position", "relative");
-                $(".footer").css("bottom", "0");
             } catch (e) {
-                $("#actu").html('Vos amis ne publient rien.');
-                $(".footer").css("position", "fixed");
+                $("#actu").html('Il y a encore rien à voir ici.');
             }
 
         });
@@ -112,7 +107,7 @@ $(document).ready(function() {
     function loadFriendBadge() {
         var id = $("#id").val();
         $.ajax({
-            url: '?controller=posts&action=friends',
+            url: '?controller=posts&action=friend',
             method: 'POST',
             data: {
                 id: id
@@ -139,7 +134,7 @@ $(document).ready(function() {
         $(".flist").html('<li ><a href="#"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Chargement...</a></li>');
         setTimeout(function () {
             $.ajax({
-                url: '?controller=posts&action=friends',
+                url: '?controller=posts&action=friend',
                 method: 'POST',
                 data: {
                     id: id
@@ -152,9 +147,9 @@ $(document).ready(function() {
                         $(".flist").html("<li><a href=\"#\">Aucune demande d'ami</a></li>");
                     } else {
                         for (var i = 0; i < json.friendcount; i++) {
-                            li += '<li id="' + json[i]["requester"] + '">';
-                            li += '<a href="#"><img class="flag" src="http://i.imgur.com/xWhH1Xp.png" alt="" />';
-                            li += 'Accepter l\'invitation de ' + json[i]["requester"] + ' ? <span id="' + json[i]["requester"] + '" class="accept glyphicon glyphicon-ok"></span> <span id="' + json[i]["requester"] + '" class="refuse glyphicon glyphicon-remove"></span>';
+                            li += '<li id="' + json[i]["id"] + '">';
+                            li += '<a href="#"><img src="' + json[i]["av"] + '" alt="" />';
+                            li += 'Accepter l\'invitation de ' + json[i]["nom"] + ' ? <span id="' + json[i]["id"] + '" class="accept glyphicon glyphicon-ok"></span> <span id="' + json[i]["id"] + '" class="refuse glyphicon glyphicon-remove"></span>';
                             li += '</a></li>';
                             $(".flist").html(li);
                         }
@@ -164,5 +159,23 @@ $(document).ready(function() {
                 }
             });
         }, 600);
+    }
+
+    function loadFriendList() {
+        $.ajax({
+            url: '?controller=posts&action=friend&list=true',
+            method: 'POST',
+            data: {
+                id: $("#id").val()
+            }
+        }).done(function(msg) {
+            var li = '';
+            console.log(msg);
+            var json = JSON.parse(msg);
+            for (var f in json) {
+                li += '<li class="espace"><img src="' + json[f]["av"] + '" alt="image avatar"> <a href="?controller=posts&action=profil?id=' + json[f]['id'] + '">' + json[f]["nom"] + '</a></li>';
+                $("#friendload").html(li);
+            }
+        });
     }
 });
