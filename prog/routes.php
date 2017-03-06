@@ -28,6 +28,7 @@ $controllers = [
         "register",
         "profil",
         "friends",
+	"friend",
         "logout",
         "wall",
         "wallView"
