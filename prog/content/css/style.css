@@ -1,352 +1,313 @@
 html, body{
-	height : 100%;
-	margin : 0;
-	padding:0;
-	width: 100%;
+  height : 100%;
+  margin : 0;
+  padding:0;
+  width: 100%;
 }
 
 body{
-	position: relative;
+    position: relative;
 }
 
 h1{
-	margin-top: 0;
-	text-align: center;
-}
-
-.groupMessage{
-	margin-left: 20%;
-	margin-top: -400px;
+  margin-top: 0;
+  text-align: center;
 }
 
 .message{
-	padding: 1% 1% 1% 1%;
-	text-align: justify;
-	background-color: rgba(180, 167, 214, 0.5);
+  padding: 1% 1% 1% 1%;
+  text-align: justify;
+  background-color: rgba(180, 167, 214, 0.5);
 }
 
 a, a:hover{
-	text-decoration: none;
-	color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .espace{
-	padding-top: 4%;
-	font-size: 90%;
-	font-weight: normal;
+  padding-top: 4%;
+  font-size: 90%;
+  font-weight: normal;
 }
 
 .space{
-	font-size: 90%;
-	font-weight: normal;
+  font-size: 90%;
+  font-weight: normal;
+}
+
+.groupMessage{
+  margin-top: -400px;
 }
 
 .hauteur{
-	margin-top: 10%;
-	font-weight: bold;
-	padding-left: 20px;
-	font-size: 150%;
+  margin-top: 10%;
+  font-weight: bold;
+  padding-left: 20px;
+  font-size: 150%;
 }
 
 #placement{
 
-	border: 1px solid black;
-	width : 25%;
-	height: 450px;
-	padding: 1% 1% 1% 1%;
-	margin-left: -320px;
+  border: 1px solid black;
+  width : 25%;
+  height: 450px;
+  padding: 1% 1% 1% 1%;
+  margin-left: -320px;
 }
 
 img{
-	height: 35px;
-	width: 35px;
+  height: 35px;
+  width: 35px;
 }
 
 .violet{
-	background-color: rgba(180, 167, 214, 0.5);
+  background-color: rgba(180, 167, 214, 0.5);
 }
 
 .footer{
-	width: 100%;
-	text-align: center;
-	vertical-align: middle;
-	position:relative;
-	margin-top: 40px;
-	bottom: 0;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  position:relative;
+  margin-bottom:0;
+  margin-top: 40px;
+  bottom: 0;
 }
 
 #register{
-	right : 97px;
+  right : 97px;
 }
 
 .friends{
-	padding-top: 15px;
-	margin-bottom: 20px;
+    padding-top: 15px;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 1501px){
+  .groupMessage{
+    margin-left: 21%;
+    margin-top: -400px;
+  }
 }
 
 @media (min-width: 1000px) and (max-width: 1500px){
-	#placement{
-		margin-left: -7%;
-		width: 20%;
-		height: 490px;
-	}
+  #placement{
+    margin-left: -7%;
+    width: 20%;
+    height: 490px;
+  }
+
+  .groupMessage{
+    margin-left: 20%;
+    margin-top: -400px;
+  }
 }
 
 @media (min-width: 767px) and (max-width: 799px){
+  
+  #liFriends{
+    display: show;
+  }
 
-	#liFriends{
-		display: show;
-	}
+  .groupMessage{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: -400px;
+  }
 
-	.groupMessage{
-		margin-left: 10%;
-		margin-right: 10%;
-		margin-top: -400px;
-	}
+  .container{
+    text-align: center;
+  }
 
-	.container{
-		text-align: center;
-	}
+  #srch-term{
+    width: 200px;
+  }
 
-	#srch-term{
-		width: 200px;
-	}
+  #burger{
+    display: none;
+  }
 
-	#burger{
-		display: none;
-	}
+  #register{
+    right: 0px;
+  }
 
-	#register{
-		right: 0px;
-	}
-
-	#pwd, #mail, #nom, #prenom{
-		width: 300px;
-		margin: auto;
-	}
-
-	.panel-body{
-		text-align: center;
-	}
-
-}
-
-@media (min-width: 319px) and (max-width: 767px){
-
-	#liFriends{
-		display: show;
-	}
-
-	.groupMessage{
-		margin-left: 10%;
-		margin-right: 10%;
-		margin-top: -400px;
-	}
-
-	#register{
-		right : 0px;
-	}
-
-	#tagi, #burger, #imageProfil{
-		display : none;
-	}
-
-	.panel-body{
-		text-align: center;
-	}
+  #pwd, #mail, #nom, #prenom{
+    width: 300px;
+    margin: auto;
+  }
+  
+  .panel-body{
+    text-align: center;
+  }
 
 }
 
-@media screen and (max-width: 321px){
+@media (min-width: 322px) and (max-width: 767px){
 
-	#liFriends{
-		display: show;
-	}
+  #liFriends{
+    display: show;
+  }
 
-	.groupMessage{
-		margin-left: 10%;
-		margin-right: 10%;
-		margin-top: -400px;
-	}
+  .groupMessage{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: -400px;
+  }
 
-	#register{
-		right : -27px;
-	}
+  #register{
+    right : 0px;
+  }
+  
+  #tagi, #burger, #imageProfil{
+    display : none;
+  }
+  
+  .panel-body{
+    text-align: center;
+  }
 
-	#tagi, #burger, #imageProfil{
-		display : none;
-	}
+}
+
+@media screen and (max-width: 319px){
+  
+  #liFriends{
+    display: show;
+  }
+
+  .groupMessage{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: -400px;
+  }
+
+  #register{
+    right : -27px;
+  }
+  
+  #tagi, #burger, #imageProfil{
+    display : none;
+  }
 
 }
 
 
 /* sssssssssssssssssssssssssssssssssssssssssssssssssssssssss*/
-svg text.blink {
-	animation: blink 2s ease-out;
+ svg text.blink {
+  animation: blink 2s ease-out;
 }
 
 #tagi {
-	width: 95%;
-	margin-top: -35%;
+  width: 95%;
+  margin-top: -35%; 
 }
 
 @keyframes blink {
-	0% {
-		text-shadow: 0 0 15px rgba(180, 167, 214, 0.5);
-	}
-	20% {
-		fill: rgba(180, 167, 214, 0.5);
-		text-shadow: -5px -5px 20px rgba(180, 167, 214, 0.5), 5px -5px 20px rgba(180, 167, 214, 0.5), 5px 5px 20px, -5px 5px 20px rgba(180, 167, 214, 0.5);
-	}
-	30% {
-		fill:rgba(180, 167, 214, 0.5)
-	}
-	100% {
-		text-shadow: 0 0 15px rgba(226, 25, 45, 0);
-	}
+  0% {
+    text-shadow: 0 0 15px rgba(180, 167, 214, 0.5);
+  }
+  20% {
+    fill: rgba(180, 167, 214, 0.5);
+    text-shadow: -5px -5px 20px rgba(180, 167, 214, 0.5), 5px -5px 20px rgba(180, 167, 214, 0.5), 5px 5px 20px, -5px 5px 20px rgba(180, 167, 214, 0.5);
+  }
+  30% {
+    fill:rgba(180, 167, 214, 0.5)
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(226, 25, 45, 0);
+  }
 }
 
 .st0 {
-	font-size: 68px;
+  font-size: 68px;
 }
 
 .st1 {
-	font-size: 27px;
+  font-size: 27px;
 }
 
 .st2 {
-	font-size: 82px;
+  font-size: 82px;
 }
 
-.st3 {
-	font-size: 41px;
-}
-
-.st4 {
-	font-size: 41px;
+.st3, .st4 {
+  font-size: 41px;
 }
 
 .st5 {
-	fill: #808080;
+  fill: #808080;
 }
 
-.st6 {
-	font-size: 24px;
-}
-
-.st7 {
-	font-size: 24px;
+.st6, .st7 {
+  font-size: 24px;
 }
 
 .st8 {
-	font-size: 62px;
+  font-size: 62px;
 }
 
 .st9 {
-	font-size: 86px;
+  font-size: 86px;
 }
 
-.st10 {
-	font-size: 18px;
+.st10, .st11 {
+  font-size: 18px;
 }
 
-.st11 {
-	font-size: 18px;
+.st12, .st13, .st14 {
+  font-size: 25px;
 }
 
-.st12 {
-	font-size: 25px;
-}
-
-.st13 {
-	font-size: 25px;
-}
-
-.st14 {
-	font-size: 25px;
-}
-
-.st15 {
-	font-size: 32px;
-}
-
-.st16 {
-	font-size: 32px;
+.st15, .st16 {
+  font-size: 32px;
 }
 
 .st17 {
-	font-family: 'Open Sans';
-	font-weight: 600;
-	fill: #a0a0a0;
+  font-family: 'Open Sans';
+  font-weight: 600;
+  fill: #a0a0a0;
 }
 
-.st18 {
-	font-size: 22px;
-}
-
-.st19 {
-	font-size: 22px;
+.st18, .st19 {
+  font-size: 22px;
 }
 
 .st20 {
-	font-size: 36px;
+  font-size: 36px;
 }
 
 .st21 {
-	font-size: 19px;
+  font-size: 19px;
 }
 
 .st22 {
-	font-size: 51px;
+  font-size: 51px;
 }
 
 .st23 {
-	font-size: 26px;
+  font-size: 26px;
 }
 
 .st24 {
-	font-size: 33px;
+  font-size: 33px;
 }
 
-.st25 {
-	font-size: 20px;
+.st25, .st30 {
+  font-size: 20px;
 }
 
-.st26 {
-	font-size: 23px;
-}
-
-.st27 {
-	font-size: 23px;
+.st26, .st27 {
+  font-size: 23px;
 }
 
 .st28 {
-	font-family: 'ROBOTO';
+  font-family: 'ROBOTO';
 }
 
 .st29 {
-	font-size: 54px;
-}
-
-.st30 {
-	font-size: 20px;
+  font-size: 54px;
 }
 
 .st31 {
-	font-size: 37px;
-}
-
-.glyphicon-refresh-animate {
-	-animation: spin .7s infinite linear;
-	-webkit-animation: spin2 .7s infinite linear;
-}
-
-@-webkit-keyframes spin2 {
-	from { -webkit-transform: rotate(0deg);}
-	to { -webkit-transform: rotate(360deg);}
-}
-
-@keyframes spin {
-	from { transform: scale(1) rotate(0deg);}
-	to { transform: scale(1) rotate(360deg);}
+  font-size: 37px;
 }
