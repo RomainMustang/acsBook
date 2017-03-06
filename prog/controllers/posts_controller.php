@@ -138,8 +138,10 @@ class PostsController {
             foreach($_POST as $key => $value) {
                 $this->$key = htmlspecialchars($value);
             }
-            if (sizeof($_POST) == 1) { // notifications
+            if ((sizeof($_POST) == 1) && (!isset($_GET["list"]))) { // notifications
                 $friend->getNotif($this->id);
+            } elseif ((sizeof($_POST) == 1) && (isset($_GET['list']))) { // get all friends in a json c:
+                $friend->getAllFriends($this->id);
             } else { // someone accepted/refuse a request.
                 $friend->setRequest(
                     $this->id1,
