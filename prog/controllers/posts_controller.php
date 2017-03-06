@@ -12,7 +12,7 @@ class PostsController {
         } else {
             $cookie = preg_replace("/[^a-zA-Z0-9s]/", "", $_COOKIE["user_token"]);
             $info = $user->checkCookie($cookie);
-            echo $twig->render("templates/views/accueil.html", [
+            echo $twig->render("templates/views/home.html", [
                 "id" => $info["id"],
                 "name" => $info["prenom"],
                 "avatar" => $info["photos"]
@@ -154,6 +154,19 @@ class PostsController {
                 'message' => 'GET not supported'
             ], JSON_PRETTY_PRINT));
         }
+    }
+
+    public function friends() {
+        global $twig;
+        echo $twig->render('templates/views/friends.html');
+    }
+
+    public function search(){
+        global $twig, $user;
+        if(isset($_POST['srch-term'])){
+            $user->search($_POST['srch-term']);
+        }
+        echo $twig->render('templates/views/search.html');
     }
 
     public function error() {
