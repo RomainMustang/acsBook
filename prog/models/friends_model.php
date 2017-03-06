@@ -6,7 +6,8 @@ class FriendsModel {
         $this->id1 = $id1;
         $this->id2 = $id2;
         $this->option = $option;
-        $update == true ? $this->saveRequest() : $this->createRequest();
+        var_dump($update);
+        $update == true ? $this->createRequest() : $this->saveRequest();
     }
 
     public function saveRequest() {
@@ -22,7 +23,7 @@ class FriendsModel {
     }
 
     public function getNotif($id) {
-        global $datab;
+        global $datab, $user;
         $query  = $datab->pdo->prepare("SELECT * from amis where id_ami1 = :id and valeur = '1' ORDER by id DESC");
         $query->bindParam(':id', $id);
         $query->execute();
@@ -30,7 +31,26 @@ class FriendsModel {
         $info   = ["friendcount" => sizeof($fetch)];
         foreach($fetch as $key => $value) {
             $info[] = [
-                "requester" => $value["id_ami2"]
+                "id" => $value["id_ami2"],
+                "av" => $user->getAvatarById($value["id_ami2"]),
+                "nom" => $user->getNameById($value["id_ami2"])
+            ];
+        }
+        return sizeof($info)  == 0 ? false : print json_encode($info);
+    }
+
+    public function getAllFriends($id) {
+        global $datab, $user;
+        $query  = $datab->pdo->prepare("SELECT * from amis where id_ami1 = :id and valeur = '2' ORDER by id DESC");
+        $query->bindParam(':id', $id);
+        $query->execute();
+        $fetch  = $query->fetchAll();
+        $info   = [];
+        foreach($fetch as $key => $value) {
+            $info[] = [
+                "id" => $value["id_ami2"],
+                "nom" => $user->getNameById($value["id_ami2"]),
+                "av" => $user->getAvatarById($value["id_ami2"])
             ];
         }
         return sizeof($info)  == 0 ? false : print json_encode($info);
