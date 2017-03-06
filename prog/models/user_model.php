@@ -125,6 +125,20 @@ class UserModel {
         $fetch  = $query->fetch();
         return count($fetch) > 1 ? $fetch : false;
     }
+    
+    public function getNameById($id) {
+        global $datab;
+        $query  = $datab->pdo->query("SELECT * from utilisateurs where id = '{$id}'");
+        $fetch  = $query->fetch();
+        return count($fetch) > 1 ? $fetch["prenom"]. ' '.$fetch["nom"] : false;
+    }
+
+    public function getInfoById($id) {
+        global $datab;
+        $query  = $datab->pdo->query("SELECT * from utilisateurs where id = '{$id}'");
+        $fetch  = $query->fetch();
+        return count($fetch) > 1 ? $fetch : false;
+    }
 
     public function setToken($email) {
         global $datab;
