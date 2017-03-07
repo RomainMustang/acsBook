@@ -57,15 +57,13 @@ class WallModel{
         }
         return sizeof($info)  == 0 ? false : print json_encode($info);
     }
-
+    
     public function time_elapsed_string($datetime, $full = false) {
         $now = new DateTime;
         $ago = new DateTime($datetime);
         $diff = $now->diff($ago);
-
         $diff->w = floor($diff->d / 7);
         $diff->d -= $diff->w * 7;
-
         $string = array(
             'y' => 'an',
             'm' => 'mois',
@@ -82,7 +80,6 @@ class WallModel{
                 unset($string[$k]);
             }
         }
-
         if (!$full) $string = array_slice($string, 0, 1);
         return $string ? implode(', ', $string)  : 'à l\'instant';
     }

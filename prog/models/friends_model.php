@@ -55,7 +55,7 @@ class FriendsModel {
         }
         return sizeof($info)  == 0 ? false : print json_encode($info);
     }
-
+    
     public function getFriendStatus($id, $id2) {
         global $datab;
         $query = $datab->pdo->prepare("SELECT * FROM amis WHERE id_ami1 = :id1 and id_ami2 = :id2");

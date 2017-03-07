@@ -1,6 +1,7 @@
 <?php
 class PostsController {
     private $nom, $prenom, $email, $pwd, $message, $id, $id1, $id2, $option;
+
     public function home() {
         global $twig, $user, $wall;
         if ($this->isLogged() == false) {
@@ -18,6 +19,7 @@ class PostsController {
             ]);
         }
     }
+
     public function profil() {
         global $twig, $user, $wall;
         if ($this->isLogged() == false) {
@@ -28,28 +30,15 @@ class PostsController {
         } else {
             $cookie = preg_replace("/[^a-zA-Z0-9s]/", "", $_COOKIE["user_token"]);
             $info = $user->checkCookie($cookie);
-            if ((isset($_GET["id"])) && (is_numeric($_GET["id"]))) {
-                if ($user->getInfoById($_GET["id"])) {
-                    echo $twig->render("profil.twig", [
-                        "id" => $info["id"],
-                        "id2" => $_GET["id"],
-                        "name" => $info["prenom"],
-                        "avatar" => $info["photos"],
-                        "mur" => $user->getInfoById($_GET["id"])
-                    ]);
-                } else {
-                    die("NOT FOUND.");
-                }
-            } else {
-                echo $twig->render("profil.twig", [
-                    "id" => $info["id"],
-                    "name" => $info["prenom"],
-                    "avatar" => $info["photos"],
-                    "mur" => $user->getInfoById($info["id"])
-                ]);
-            }
+            echo $twig->render("templates/views/profil.html", [
+                "id" => $info["id"],
+                "name" => $info["prenom"],
+                "avatar" => $info["photos"]
+                //"mur" => $wall->getMsg($info["id"])
+            ]);
         }
     }
+
     public function register() {
         global $twig, $user;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -66,6 +55,7 @@ class PostsController {
             echo $twig->render('templates/views/index.html');
         }
     }
+
     public function login() {
         global $twig, $user;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -80,6 +70,7 @@ class PostsController {
             echo $twig->render('templates/views/login.html');
         }
     }
+
     public function logout() {
         global $twig;
         if (isset($_COOKIE["user_token"])) {
@@ -92,6 +83,7 @@ class PostsController {
             echo $twig->render('templates/views/index.html');
         }
     }
+
     public function isLogged() {
         global $user;
         if (!isset($_COOKIE["user_token"])) {
@@ -104,6 +96,7 @@ class PostsController {
         }
         return true;
     }
+
     public function wall() {
         global $wall;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -166,6 +159,7 @@ class PostsController {
             ], JSON_PRETTY_PRINT));
         }
     }
+
     public function friends() {
         global $twig, $user;
         $cookie = preg_replace("/[^a-zA-Z0-9s]/", "", $_COOKIE["user_token"]);
@@ -173,15 +167,23 @@ class PostsController {
             echo $twig->render("templates/views/friends.html", [
                 "id" => $info["id"],
                 "name" => $info["prenom"],
-                "avatar" => $info["photos"]]);
+                "avatar" => $info["photos"]
+            ]);
     }
+
     public function search(){
         global $twig, $user;
         if(isset($_POST['srch-term'])){
             $user->search($_POST['srch-term']);
         }
-        echo $twig->render('templates/views/search.html');
+        $info = $user->checkCookie($cookie);
+        echo $twig->render("templates/views/friends.html", [
+            "id" => $info["id"],
+            "name" => $info["prenom"],
+            "avatar" => $info["photos"]
+        ]);
     }
+
     public function error() {
         global $twig;
         echo $twig->render('templates/views/error.html');
