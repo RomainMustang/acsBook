@@ -19,7 +19,7 @@ class WallModel{
     }
 
     public function getMsg($id){
-        global $datab;
+        global $datab, $user;
         $info   = [];
         $query  = $datab->pdo->prepare("SELECT * from posts where id_utilisateur = :id ORDER by id DESC");
         $query->bindParam(':id', $id);
@@ -29,7 +29,10 @@ class WallModel{
             $info[] = [
                 "id" => $value["id"],
                 "message" => $value["message"],
-                "date" => $value["date"]
+                "date" => $this->time_elapsed_string($value["date"]),
+                "nom_util" => $user->getNameById($value["id_utilisateur"]),
+                "id_util" => $value["id_utilisateur"],
+                "avatar" => $user->getInfoById($value["id_utilisateur"])["photos"]
             ];
         }
         return sizeof($info)  == 0 ? false : print json_encode($info);
