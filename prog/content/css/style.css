@@ -101,6 +101,17 @@ img{
   bottom: 0;
 }
 
+.dropdown{
+  float: left;
+}
+
+.dropdown-toggle{
+  padding: 0;
+}
+
+#liFriends{
+  display: none;
+}
 
 #register{
 	right : 97px;
