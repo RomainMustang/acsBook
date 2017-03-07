@@ -77,7 +77,9 @@ $(document).ready(function() {
         }).done(function(msg) {
             $("#message").val("");
             loadWall();
-            loadWallProfil();
+            if ($("#actu2") != undefined) {
+                loadWallProfil();
+            }
         });
     }
 
