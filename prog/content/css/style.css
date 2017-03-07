@@ -32,16 +32,6 @@ h1{
   background-color: rgba(180, 167, 214, 0.5);
 }
 
-.image_couverture{
-  /*border: 1px solid black;*/
-  height: 250px;
-  width: 126.8%;
-  margin-left: 3.5%;
-  margin-top: -470px;
-  margin-bottom: 450px;
-
-}
-
 #logo{
   margin-top: 3px;
 }
@@ -54,16 +44,6 @@ h1{
 
 #search{
   height: 34px;
-}
-
-#charger{
-  margin-left: 89%;
-  margin-top: 14.7%;
-}
-
-#ami{
-  margin-left: 80%;
-  margin-top: -2.31%;
 }
 
 a, a:hover{
@@ -142,7 +122,57 @@ img{
   #liFriends{
   display: none;
   }
+
+  .image_couverture{
+  height: 250px;
+  width: 126.8%;
+  left: 39px;
+  margin-top: -470px;
+  margin-bottom: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  }
+
+  #charger{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  #ami{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
   
+}
+
+@media screen and (max-width: 1500px){
+
+  .image_couverture{
+    width: 88%;
+    height: 100px;
+    margin-top: -450px;
+    margin-bottom: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+
+  #charger{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  #ami{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+
 }
 
 @media (min-width: 1000px) and (max-width: 1500px){
@@ -151,6 +181,7 @@ img{
     width: 20%;
     height: 490px;
   }
+
 }
 
 @media (min-width: 767px) and (max-width: 799px){
