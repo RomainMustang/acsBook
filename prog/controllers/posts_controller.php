@@ -30,12 +30,26 @@ class PostsController {
         } else {
             $cookie = preg_replace("/[^a-zA-Z0-9s]/", "", $_COOKIE["user_token"]);
             $info = $user->checkCookie($cookie);
-            echo $twig->render("templates/views/profil.html", [
-                "id" => $info["id"],
-                "name" => $info["prenom"],
-                "avatar" => $info["photos"]
-                //"mur" => $wall->getMsg($info["id"])
-            ]);
+            if ((isset($_GET["id"])) && (is_numeric($_GET["id"]))) {
+                if ($user->getInfoById($_GET["id"])) {
+                    echo $twig->render("templates/views/profil.html", [
+                        "id" => $info["id"],
+                        "id2" => $_GET["id"],
+                        "name" => $info["prenom"],
+                        "avatar" => $info["photos"],
+                        "mur" => $user->getInfoById($_GET["id"])
+                    ]);
+                } else {
+                    die("NOT FOUND.");
+                }
+            } else {
+                echo $twig->render("templates/views/profil.html", [
+                    "id" => $info["id"],
+                    "name" => $info["prenom"],
+                    "avatar" => $info["photos"],
+                    "mur" => $user->getInfoById($info["id"])
+                ]);
+            }
         }
     }
 

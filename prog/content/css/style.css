@@ -154,7 +154,7 @@ img{
     width: 88%;
     height: 100px;
     margin-top: -450px;
-    margin-bottom: 450px;
+    margin-bottom: 50px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -180,6 +180,11 @@ img{
     margin-left: -7%;
     width: 20%;
     height: 490px;
+  }
+
+  .image_couverture{
+    width: 80%;
+    margin-left: 225px;
   }
 
 }
@@ -221,6 +226,11 @@ img{
     text-align: center;
   }
 
+  .image_couverture{
+        margin-top: -50px;
+        margin-bottom: 50px;
+  }
+
 }
 
 @media (min-width: 319px) and (max-width: 767px){
@@ -247,6 +257,11 @@ img{
     text-align: center;
   }
 
+  .image_couverture{
+        margin-top: -450px;
+        margin-bottom: 450px;
+  }
+
 }
 
 @media screen and (max-width: 321px){
@@ -267,6 +282,10 @@ img{
 
   #tagi, #burger, #imageProfil{
     display : none;
+  }
+
+  .image_couverture{
+        margin-bottom: 50px;
   }
 
 }

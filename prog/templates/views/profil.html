@@ -3,8 +3,8 @@
 	{% block content %}
 		<div class="container header">
 		    <div class="panel panel-default" id="placement">
-                <img src="{{avatar}}" style="width: 65%; height: 25%; margin-left: 18%;"> 
-                <p style="text-align: center;padding-top: 1%;font-weight: bold;font-size: 32px;">{{name}}</p>
+                <img src="{{mur.photos}}" style="width: 65%; height: 25%; margin-left: 18%;"> 
+                <p style="text-align: center;padding-top: 1%;font-weight: bold;font-size: 32px;">{{mur.prenom}} {{ mur.nom}}</p>
 	                <ul class="hauteur"><a href="?controller=posts&action=friends">Vos amis</a>
 	                </ul>
 	                <ul class="hauteur">Vos groupes:
@@ -14,7 +14,7 @@
 	                </ul>
             </div>
 	    <div class="panel panel-default image_couverture">
-	    	<button class="btn btn-default button" id="charger" type="button">Charger une photo...</button>
+	    	<button class="btn btn-default button" id="charger" type="button">...</button>
 	    	<button class="btn btn-default button" id="ami" type="button">Ajouter un ami</button>
 	    </div>  
         </div>
