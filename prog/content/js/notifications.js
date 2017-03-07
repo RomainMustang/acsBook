@@ -16,19 +16,28 @@ $(document).ready(function() {
         );
     });
 
-    $(document).on('click', function(test) {
-        if (!isNaN(test.target.id)) {
-           if (test.target.className.indexOf("refuse") != -1 || test.target.className.indexOf("accept") != -1) {
-               var classe = test.target.className.split(" ");
-               AddOrRemoveFriend(classe[0], $("#id").val(), test.target.id);
-           }
-        }
+    $("#actu2").ready(function() {
+        loadWallProfil();
     });
 
+    $(document).on('click', function(test) {
+        if (!isNaN(test.target.id)) {
+            if (test.target.className.indexOf("remove") != -1) {
+                console.log($("#id").val(), $("p").attr("data-friend"));
+            }
+            if (test.target.className.indexOf("refuse") != -1 || test.target.className.indexOf("accept") != -1) {
+               var classe = test.target.className.split(" ");
+               AddOrRemoveFriend(classe[0], $("#id").val(), test.target.id);
+            }
+        }
+    });
     /* REFRESH THE WALL !! */
     setInterval(function() {
         loadFriendBadge();
         loadWall();
+        if ($("#actu2") != undefined) {
+            loadWallProfil();
+        }
     }, 30000);
 
     /* LOAD BADGE */
@@ -68,6 +77,7 @@ $(document).ready(function() {
         }).done(function(msg) {
             $("#message").val("");
             loadWall();
+            loadWallProfil();
         });
     }
 
@@ -99,6 +109,39 @@ $(document).ready(function() {
                 }, 500);
             } catch (e) {
                 $("#actu").html('Il y a encore rien à voir ici.');
+            }
+
+        });
+    }
+
+    function loadWallProfil() {
+        var id = $("#id").val();
+        $.ajax({
+            url: '?controller=posts&action=wallView&profil=true',
+            method: 'POST',
+            data: {
+                id: id
+            }
+        }).done(function(msg) {
+            try {
+                var json    = JSON.parse(msg);
+                var panel   = '';
+                setTimeout(function () {
+                    for (var js in json) {
+                        panel += '<div class="panel panel-default message">';
+                        panel += '<div class="panel-body "><div class="media-left">';
+                        panel += '<a href="#"><img src="' + json[js]["avatar"] + '" class="media-object img-circle" alt="image avatar"></a>';
+                        panel += '</div>';
+                        panel += '<div class="media-body panel-body">';
+                        panel += '<h4 class="media-heading">' + json[js]["nom_util"] + ' <small><i class="glyphicon glyphicon-time"></i> ' + json[js]["date"] + '</i></small></h4>';
+                        panel += '<span style="white-space: pre-line;">' + json[js]["message"] + ' </span>';
+                        panel += '</div>';
+                        panel += '</div></div>';
+                        $("#actu2").html(panel);
+                    }
+                }, 500);
+            } catch (e) {
+                $("#actu2").html('Il y a encore rien à voir ici.');
             }
 
         });
@@ -170,10 +213,12 @@ $(document).ready(function() {
             }
         }).done(function(msg) {
             var li = '';
-            console.log(msg);
             var json = JSON.parse(msg);
             for (var f in json) {
-                li += '<li class="espace"><img src="' + json[f]["av"] + '" alt="image avatar"> <a href="?controller=posts&action=profil?id=' + json[f]['id'] + '">' + json[f]["nom"] + '</a></li>';
+                li += '<div class="group-ami">';
+                li += '<img src="' + json[f]["av"] + '">';
+                li += '<p data-friend="' + json[f]["id"] + '">' + json[f]["nom"] + '</p>';
+                li += '<button type="button" class="btn btn-default remove" style="margin-bottom: 3%">Enlever des amis</button></div>';
                 $("#friendload").html(li);
             }
         });
