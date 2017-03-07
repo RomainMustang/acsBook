@@ -1,7 +1,6 @@
 <?php
 class PostsController {
     private $nom, $prenom, $email, $pwd, $message, $id, $id1, $id2, $option;
-
     public function home() {
         global $twig, $user, $wall;
         if ($this->isLogged() == false) {
@@ -19,7 +18,6 @@ class PostsController {
             ]);
         }
     }
-
     public function profil() {
         global $twig, $user, $wall;
         if ($this->isLogged() == false) {
@@ -38,7 +36,6 @@ class PostsController {
             ]);
         }
     }
-
     public function register() {
         global $twig, $user;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -55,7 +52,6 @@ class PostsController {
             echo $twig->render('templates/views/index.html');
         }
     }
-
     public function login() {
         global $twig, $user;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -70,7 +66,6 @@ class PostsController {
             echo $twig->render('templates/views/login.html');
         }
     }
-
     public function logout() {
         global $twig;
         if (isset($_COOKIE["user_token"])) {
@@ -83,7 +78,6 @@ class PostsController {
             echo $twig->render('templates/views/index.html');
         }
     }
-
     public function isLogged() {
         global $user;
         if (!isset($_COOKIE["user_token"])) {
@@ -96,7 +90,6 @@ class PostsController {
         }
         return true;
     }
-
     public function wall() {
         global $wall;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -109,7 +102,6 @@ class PostsController {
             );
         }
     }
-
     public function wallView() {
         global $wall;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -131,17 +123,14 @@ class PostsController {
             ], JSON_PRETTY_PRINT));
         }
     }
-
     public function friend() {
         global $friend;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             foreach($_POST as $key => $value) {
                 $this->$key = htmlspecialchars($value);
             }
-            if ((sizeof($_POST) == 1) && (!isset($_GET["list"]))) { // notifications
+            if (sizeof($_POST) == 1) { // notifications
                 $friend->getNotif($this->id);
-            } elseif ((sizeof($_POST) == 1) && (isset($_GET['list']))) { // get all friends in a json c:
-                $friend->getAllFriends($this->id);
             } else { // someone accepted/refuse a request.
                 $friend->setRequest(
                     $this->id1,
@@ -157,12 +146,15 @@ class PostsController {
             ], JSON_PRETTY_PRINT));
         }
     }
-
     public function friends() {
-        global $twig;
-        echo $twig->render('templates/views/friends.html');
+        global $twig, $user;
+        $cookie = preg_replace("/[^a-zA-Z0-9s]/", "", $_COOKIE["user_token"]);
+            $info = $user->checkCookie($cookie);
+            echo $twig->render("templates/views/friends.html", [
+                "id" => $info["id"],
+                "name" => $info["prenom"],
+                "avatar" => $info["photos"]]);
     }
-
     public function search(){
         global $twig, $user;
         if(isset($_POST['srch-term'])){
@@ -170,7 +162,6 @@ class PostsController {
         }
         echo $twig->render('templates/views/search.html');
     }
-
     public function error() {
         global $twig;
         echo $twig->render('templates/views/error.html');
