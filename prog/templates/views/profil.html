@@ -1,21 +1,25 @@
 {% extends 'templates/layout/layout.html'%}
 	{% block title %} Profil {% endblock %}
 	{% block content %}
-		  <div class="container header">
-            <div id="placement">
-                <h1> Bienvenue sur Acs Book</h1>
-                <ul class="hauteur"> Liste de vos <a href="?controller=posts&action=friends">amis</a>
-                </ul>
-                <ul class="hauteur">Vos groupes:
-                    <li class="espace"><a  href="#">Professionel</a></li>
-                    <li class="space"><a href="#">Famille</a></li>
-                    <li class="space"><a href="#">Personnel</a></li>
-                </ul>
+		<div class="container header">
+		    <div class="panel panel-default" id="placement">
+                <img src="{{avatar}}" style="width: 65%; height: 25%; margin-left: 18%;"> 
+                <p style="text-align: center;padding-top: 1%;font-weight: bold;font-size: 32px;">{{name}}</p>
+	                <ul class="hauteur"> Liste de vos <a href="?controller=posts&action=friends">amis</a>
+	                </ul>
+	                <ul class="hauteur">Vos groupes:
+	                    <li class="espace"><a  href="#">Professionel</a></li>
+	                    <li class="space"><a href="#">Famille</a></li>
+	                    <li class="space"><a href="#">Personnel</a></li>
+	                </ul>
             </div>
         </div>
-	    <div class="image_couverture">
+
+	    <div class="panel panel-default image_couverture">
 	    photo de couverture
-	     </div>   
+	    	<button class="btn btn-default button charger" id="submit" type="button">Charger une photo...</button>
+	    	<button class="btn btn-default button ami" id="submit" type="button">Ajouter un ami</button>
+	    </div>   
 	        <div class="groupMessage">
 	            <div class="panel panel-default">
 	                <div class="panel-body">
@@ -29,6 +33,4 @@
 	            <div id="actu" style="margin-top:3%;"><a href="#"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Chargement...</a>
 	            </div>
 	        </div>
-	   
-
 	{% endblock %}
