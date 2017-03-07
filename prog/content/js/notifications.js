@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    var id = SplitID($("#id").val())[1] !== "" ? SplitID($("#id").val())[1] : SplitID($("#id").val())[0];
     /* ONCLICK EVENT */
     $("#notif").on('click', function () {
         loadNotification();
@@ -12,7 +13,7 @@ $(document).ready(function() {
     $("#submit").on('click', function() {
         saveMessage(
             $("#message").val(),
-            $("#id").val()
+            id
         );
     });
 
@@ -22,12 +23,9 @@ $(document).ready(function() {
 
     $(document).on('click', function(test) {
         if (!isNaN(test.target.id)) {
-            if (test.target.className.indexOf("remove") != -1) {
-                console.log($("#id").val(), $("p").attr("data-friend"));
-            }
             if (test.target.className.indexOf("refuse") != -1 || test.target.className.indexOf("accept") != -1) {
-               var classe = test.target.className.split(" ");
-               AddOrRemoveFriend(classe[0], $("#id").val(), test.target.id);
+                var classe = test.target.className.split(" ");
+                AddOrRemoveFriend(classe[0], $("#id").val(), test.target.id);
             }
         }
     });
@@ -65,7 +63,6 @@ $(document).ready(function() {
     }
 
     function saveMessage(message, id) {
-        console.log(typeof(message));
         if (message.length == 0 || $.trim(message) == '') return false; // fml
         $.ajax({
             url: '?controller=posts&action=wall',
@@ -83,8 +80,12 @@ $(document).ready(function() {
         });
     }
 
+    function SplitID(id) {
+        var ids = id.split(",");
+        return ids;
+    }
+
     function loadWall() {
-        var id = $("#id").val();
         $.ajax({
             url: '?controller=posts&action=wallView',
             method: 'POST',
@@ -117,7 +118,6 @@ $(document).ready(function() {
     }
 
     function loadWallProfil() {
-        var id = $("#id").val();
         $.ajax({
             url: '?controller=posts&action=wallView&profil=true',
             method: 'POST',
@@ -150,7 +150,6 @@ $(document).ready(function() {
     }
 
     function loadFriendBadge() {
-        var id = $("#id").val();
         $.ajax({
             url: '?controller=posts&action=friend',
             method: 'POST',
@@ -175,7 +174,6 @@ $(document).ready(function() {
     }
 
     function loadFriend() {
-        var id = $("#id").val();
         $(".flist").html('<li ><a href="#"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Chargement...</a></li>');
         setTimeout(function () {
             $.ajax({
@@ -211,7 +209,7 @@ $(document).ready(function() {
             url: '?controller=posts&action=friend&list=true',
             method: 'POST',
             data: {
-                id: $("#id").val()
+                id: id
             }
         }).done(function(msg) {
             var li = '';
