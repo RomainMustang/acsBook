@@ -102,14 +102,17 @@ class PostsController {
             );
         }
     }
+
     public function wallView() {
         global $wall;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             foreach($_POST as $key => $value) {
                 $this->$key = htmlspecialchars($value);
             }
-            if (!empty($this->id)) {
+            if ((!isset($_GET["profil"]) && (!empty($this->id)))) {
                 $wall->getMsgAll($this->id);
+            } elseif ((isset($_GET["profil"])) && (!empty($this->id))) {
+                $wall->getMsg($this->id);
             } else {
                 die(json_encode([
                     'error' => true,
@@ -123,14 +126,17 @@ class PostsController {
             ], JSON_PRETTY_PRINT));
         }
     }
+
     public function friend() {
         global $friend;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             foreach($_POST as $key => $value) {
                 $this->$key = htmlspecialchars($value);
             }
-            if (sizeof($_POST) == 1) { // notifications
+            if ((sizeof($_POST) == 1) && (!isset($_GET["list"]))) { // notifications
                 $friend->getNotif($this->id);
+            } elseif ((sizeof($_POST) == 1) && (isset($_GET['list']))) { // get all friends in a json c:
+                $friend->getAllFriends($this->id);
             } else { // someone accepted/refuse a request.
                 $friend->setRequest(
                     $this->id1,
